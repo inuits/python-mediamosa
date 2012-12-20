@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<response>
+  <header>
+    <item_count>1</item_count>
+    <item_count_total>1</item_count_total>
+    <item_offset>0</item_offset>
+    <request_class>mediamosa_rest_call_get_mediafile</request_class>
+    <request_matched_method>GET</request_matched_method>
+    <request_matched_uri>/mediafile/$mediafile_id</request_matched_uri>
+    <request_query_count>10</request_query_count>
+    <request_result>success</request_result>
+    <request_result_description/>
+    <request_result_id>601</request_result_id>
+    <request_uri>[GET] mediafile/Md2RgaUEVFhfJMeUIbwPOMei?show_stills=true&amp;mediamosa_version=2.3.0</request_uri>
+    <version>3.2.2.1882-dev</version>
+    <request_process_time>0.0414</request_process_time>
+  </header>
+  <items>
+    <item id="1">
+      <mediafile_id>Md2RgaUEVFhfJMeUIbwPOMei</mediafile_id>
+      <asset_id>g1QkoSmSeHdWfGkMKlOlldLn</asset_id>
+      <mediafile_id_source>u2ilZNiHdl7iNUdexL7BcFMY</mediafile_id_source>
+      <tag/>
+      <app_id>2</app_id>
+      <owner_id>krkeppen</owner_id>
+      <group_id/>
+      <is_original_file>FALSE</is_original_file>
+      <is_downloadable>FALSE</is_downloadable>
+      <is_streamable>FALSE</is_streamable>
+      <is_still>FALSE</is_still>
+      <filename>Sintel_Trailer1.1080p.DivX_Plus_HD.mp4</filename>
+      <uri/>
+      <transcode_profile_id>17</transcode_profile_id>
+      <tool>ffmpeg</tool>
+      <command>audiocodec:libfaac;audiobitrate:128000;audiosamplingrate:44100;audiochannels:2;videocodec:libx264;videopreset_quality:slow;videopreset_profile:baseline;2_pass_h264_encoding:2;videobitrate:800000;qmax:17;size:852x480;maintain_aspect_ratio:yes</command>
+      <file_extension>mp4</file_extension>
+      <is_protected>FALSE</is_protected>
+      <created>2012-07-05 11:38:14</created>
+      <changed>2012-07-05 11:38:14</changed>
+      <transcode_inherits_acl>TRUE</transcode_inherits_acl>
+      <metadata>
+        <video_codec>h264</video_codec>
+        <colorspace>yuv420p</colorspace>
+        <width>852</width>
+        <height>478</height>
+        <fps>24</fps>
+        <audio_codec>aac</audio_codec>
+        <sample_rate>44100</sample_rate>
+        <channels>stereo</channels>
+        <file_duration>00:00:52.20</file_duration>
+        <container_type>mov;mp4;m4a;3gp;3g2;mj2</container_type>
+        <bitrate>3012</bitrate>
+        <bpp>0.31</bpp>
+        <filesize>20543936</filesize>
+        <mime_type>video/mp4</mime_type>
+        <is_hinted>TRUE</is_hinted>
+        <is_inserted_md>FALSE</is_inserted_md>
+      </metadata>
+      <ega_download_url/>
+      <ega_stream_url/>
+      <ega_play_url/>
+      <response_object_available>TRUE</response_object_available>
+      <response_plain_available>TRUE</response_plain_available>
+      <response_metafile_available>TRUE</response_metafile_available>
+    </item>
+  </items>
+</response>

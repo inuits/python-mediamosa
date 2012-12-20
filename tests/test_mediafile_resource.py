@@ -2,11 +2,11 @@ import unittest
 
 from minimock import Mock, mock, TraceTracker
 
-from mediamosa.resources import Asset, Mediafile, MediaMosaResource
+from mediamosa.resources import Mediafile, MediaMosaResource
 from mediamosa.api import MediaMosaAPI
 
 
-class TestAssetResource(unittest.TestCase):
+class TestMediafileResource(unittest.TestCase):
 
     def setUp(self):
         self.api = MediaMosaAPI('http://video.example.com')
@@ -16,7 +16,7 @@ class TestAssetResource(unittest.TestCase):
         self.response.status_code = 200
         self.api.session.get.mock_returns = self.response
 
-        self.partial_dict = {u'is_original_file': u'FALSE',
+        self.item_dict = {u'is_original_file': u'FALSE',
             u'is_streamable': u'FALSE', u'is_downloadable': u'FALSE',
             u'app_id': u'2', u'transcode_inherits_acl': u'TRUE',
             u'tag': '', u'response_metafile_available': u'TRUE',
@@ -43,31 +43,15 @@ class TestAssetResource(unittest.TestCase):
             u'audiocodec:libfaac;audiobitrate:128000;audiosamplingrate:44100;audiochannels:2;videocodec:libx264;videopreset_quality:slow;videopreset_profile:baseline;2_pass_h264_encoding:2;videobitrate:800000;qmax:17;size:852x480;maintain_aspect_ratio:yes',
             u'group_id': ''}
 
-    def test_getting_full_asset(self):
-        """Test fetching a full asset from the api. The asset is fully
-        populated and can connect to the api."""
+    def test_getting_full_mediafile(self):
+        """Test fetching a full mediafile from the api"""
         # setup
-        self.response.content = open('tests/data/get_asset_id_response.xml')\
+        self.response.content = open('tests/data/get_mediafile_id_response.xml')\
                                     .read()
         # test
-        asset = self.api.asset('g1QkoSmSeHdWfGkMKlOlldLn')
+        mediafile = self.api.mediafile('g1QkoSmSeHdWfGkMKlOlldLn')
         # validate
-        self.assertIsInstance(asset, Asset)
-        self.assertEqual(asset._meta.state, MediaMosaResource.STATE.FULL)
-        self.assertTrue(asset.is_connected())
+        self.assertIsInstance(mediafile, Mediafile)
+        self.assertEqual(mediafile._meta.state, MediaMosaResource.STATE.FULL)
 
-    def test_getting_mediafiles_from_asset(self):
-        """Test getting mediafiles from the asset. Each mediafile is partial
-        and can connect to the api."""
-        # setup
-        self.response.content = open('tests/data/get_asset_id_response.xml')\
-                                    .read()
-        asset = Asset.fromdict(self.partial_dict, api=self.api, full=False)
-        # test
-        mediafiles = asset.list_mediafiles()
-        self.assertEqual(len(mediafiles), 3)
-        for mediafile in mediafiles:
-            self.assertIsInstance(mediafile, Mediafile)
-            self.assertEqual(mediafile._meta.state,
-                MediaMosaResource.STATE.PARTIAL)
-            self.assertTrue(mediafile.is_connected())
+

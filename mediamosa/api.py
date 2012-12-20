@@ -42,18 +42,23 @@ class MediaMosaAPI(object):
         self.authenticated = success
         return success
 
-    def assets(self):
-        """Returns a list of Assets
+    def asset(self, asset_id):
+        """Returns a full asset
+        """
+        headers, items = self._get('/asset/%s' % asset_id)
+        return Asset.fromdict(items[0], api=self, full=True)
+
+    def mediafile(self, mediafile_id):
+        """Returns a full mediafile
+        """
+        headers, items = self._get('/mediafile/%s' % mediafile_id)
+        return Mediafile.fromdict(items[0], api=self, full=True)
+
+    def asset_list(self):
+        """Returns a list of partial Assets
         """
         headers, items = self._get('/asset')
-        return [Asset(item_dict) for item_dict in items]
-
-    def mediafiles(self, asset):
-        """Returns a list of Mediafiles for an Asset
-        """
-        headers, items = self._get('/asset/%s' % asset.id)
-        return [Mediafile(item_dict) \
-            for item_dict in items[0].get('mediafiles')]
+        return [Asset.fromdict(item_dict, api=self) for item_dict in items]
 
     def play(self, mediafile, user_id='pyUser', response=FORMATS.OBJECT):
         headers, items = self._get('/asset/%s/play' % mediafile.asset_id,
