@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<response>
+  <header>
+    <item_count>{{item_count}}</item_count>
+    <item_count_total>{{item_count_total}}</item_count_total>
+    <item_offset>{{item_offset}}</item_offset>
+    <request_class>mediamosa_rest_call_asset_search</request_class>
+    <request_matched_method>GET</request_matched_method>
+    <request_matched_uri>/asset</request_matched_uri>
+    <request_query_count>37</request_query_count>
+    <request_result>success</request_result>
+    <request_result_description/>
+    <request_result_id>601</request_result_id>
+    <request_uri>[GET] asset?return_asset_ids=false&amp;hide_empty_assets=false&amp;granted=true&amp;is_public_list=false&amp;show_deleted=false&amp;show_stills=true&amp;show_collections=false&amp;calculate_total_count=true&amp;view_hidden_metadata=false&amp;operator=and&amp;limit=10&amp;order_direction=asc&amp;mediamosa_version=2.3.0</request_uri>
+    <version>3.2.2.1882-dev</version>
+    <request_process_time>0.1058</request_process_time>
+  </header>
+  <items>
+    {{asset_items}}
+  </items>
+</response>

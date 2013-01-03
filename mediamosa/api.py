@@ -3,7 +3,7 @@ import random
 import requests
 import xml.sax
 
-from resources import Asset, Mediafile
+from resources import Asset, Mediafile, AssetList
 from response import MediaMosaResponseContentHandler
 
 
@@ -12,16 +12,6 @@ class ApiException(Exception):
 
 
 class MediaMosaAPI(object):
-
-    class FORMATS(object):
-        DOWNLOAD = 'download'
-        METAFILE = 'metafile'
-        OBJECT = 'object'
-        STILL = 'still'
-        PLAIN = 'plain'
-        CUPERTINE = 'cupertino'
-        RSTP = 'rstp'
-        SILVERLIGHT = 'silverlight'
 
     def __init__(self, uri):
         self.uri = uri
@@ -54,18 +44,27 @@ class MediaMosaAPI(object):
         headers, items = self._get('/mediafile/%s' % mediafile_id)
         return Mediafile.fromdict(items[0], api=self, full=True)
 
-    def asset_list(self):
+    def asset_list(self, offset=0, limit=10):
         """Returns a list of partial Assets
         """
-        headers, items = self._get('/asset')
-        return [Asset.fromdict(item_dict, api=self) for item_dict in items]
+        headers, items = self._get('/asset', {
+                'offset': offset,
+                'limit': limit
+            })
+        return AssetList(
+            headers,
+            [Asset.fromdict(item_dict, api=self) for item_dict in items],
+            api=self)
 
-    def play(self, mediafile, user_id='pyUser', response=FORMATS.OBJECT):
+    def play(self, mediafile, user_id='pyUser', response=Mediafile.FORMATS.OBJECT):
         headers, items = self._get('/asset/%s/play' % mediafile.asset_id,
             {'user_id': user_id,
              'mediafile_id': mediafile.id,
              'response': response})
-        return items[0]
+        if items:
+            return items[0]
+        else:
+            return None
 
     ## APPLICATION LAYER
 
