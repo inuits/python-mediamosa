@@ -13,24 +13,28 @@ class MediaMosaResource(object):
         """
         self.id = resource_id
         self.data = {}
-        self._meta = self._Meta()
-        self._meta.api = api
-        self._meta.state = self.STATE.EMPTY
+        self._mmmeta = self._Meta()
+        self._mmmeta.api = api
+        self._mmmeta.state = self.STATE.EMPTY
 
     def __getattr__(self, attr):
         """Looks up an attribute in the data dictionary. It will query
         the api if there is no data available.
         """
+        # ignore private attributes
+        if attr.startswith('_'):
+            raise AttributeError
+
         # return it if it already exists
         if attr in self.data:
             return self.handle(attr, self.data.get(attr))
 
         # do a lookup for partials and upgrade to full
-        if not self._meta.state == self.STATE.FULL and self.is_connected():
+        if not self._mmmeta.state == self.STATE.FULL and self.is_connected():
             new_resource = self.fetch_resource_from_api(self.id)
             # add received data to resource and change is_empty state
             self.data = new_resource.data
-            self._meta.state = self.STATE.FULL
+            self._mmmeta.state = self.STATE.FULL
             # retry lookup
             return self.__getattr__(attr)
 
@@ -54,14 +58,14 @@ class MediaMosaResource(object):
         resource = cls(res_id)
         resource.data = dct
         if full:
-            resource._meta.state = cls.STATE.FULL
+            resource._mmmeta.state = cls.STATE.FULL
         else:
-            resource._meta.state = cls.STATE.PARTIAL
-        resource._meta.api = api
+            resource._mmmeta.state = cls.STATE.PARTIAL
+        resource._mmmeta.api = api
         return resource
 
     def is_connected(self):
-        return self._meta.api is not None
+        return self._mmmeta.api is not None
 
     class _Meta(object):
         state = None
@@ -93,11 +97,19 @@ class Mediafile(MediaMosaResource):
     def fetch_resource_from_api(self, res_id):
         """Performs the api query necessary to retrieve the mediamosa resource.
         """
-        return self._meta.api.mediafile(self.id)
+        return self._mmmeta.api.mediafile(self.id)
 
     def __repr__(self):
         return "<mediamosa.resources.Mediafile (%s) %s>" % \
             (self.file_extension, self.id)
+
+    def play(self):
+        play_info = self._mmmeta.api.play(
+            self, user_id='pyUser',
+            response=self.FORMATS.OBJECT)
+        if play_info:
+            return play_info.get('output')
+        return None
 
 
 class Asset(MediaMosaResource):
@@ -114,13 +126,22 @@ class Asset(MediaMosaResource):
     def fetch_resource_from_api(self, res_id):
         """Performs the api query necessary to retrieve the mediamosa resource.
         """
-        return self._meta.api.asset(self.id)
+        return self._mmmeta.api.asset(self.id)
+
+    def source(self):
+        """Returns the mediafile describing the source
+        """
+        mediafiles = self.list_mediafiles()
+        for mediafile in mediafiles:
+            if mediafile.is_original_file:
+                return mediafile
+        return None
 
     def list_mediafiles(self):
         """Returns a list of mediafiles associated with this asset
         """
         return [Mediafile.fromdict(dct,
-            api=self._meta.api, full=False) for dct in self.mediafiles]
+            api=self._mmmeta.api, full=False) for dct in self.mediafiles]
 
     def __repr__(self):
         return "<mediamosa.resources.Asset %s>" % self.id
@@ -185,6 +206,11 @@ class AssetList(list):
         # located in current page.
         else:
             return super(AssetList, self).__getitem__(relative_index)
+
+    def __getslice__(self, i, j):
+        # call the required slice from the API.
+        self._fetch_page(i, j - i)
+        return super(AssetList, self).__getslice__(0, j - i)
 
     def __iter__(self):
         self.index = -1

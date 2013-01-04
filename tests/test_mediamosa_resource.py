@@ -50,24 +50,24 @@ class TestMediaMosaResource(unittest.TestCase):
             u'is_protected': u'FALSE', u'play_restriction_start': '',
             u'group_id': ''}
 
-    # _meta.state
+    # _mmmeta.state
 
     def test_create_empty_asset(self):
         """Tests if an empty asset can be created"""
         a = Asset('g1QkoSmSeHdWfGkMKlOlldLn')
-        self.assertEqual(a._meta.state, MediaMosaResource.STATE.EMPTY)
+        self.assertEqual(a._mmmeta.state, MediaMosaResource.STATE.EMPTY)
 
     def test_create_partial_asset(self):
         """Tests if a partially pre-filled asset can be created"""
         a = Asset.fromdict(self.item_dict)
-        self.assertEqual(a._meta.state, MediaMosaResource.STATE.PARTIAL)
+        self.assertEqual(a._mmmeta.state, MediaMosaResource.STATE.PARTIAL)
 
     def test_create_full_asset(self):
         """Tests if an fully pre-filled asset can be created"""
         a = Asset.fromdict(self.item_dict, full=True)
-        self.assertEqual(a._meta.state, MediaMosaResource.STATE.FULL)
+        self.assertEqual(a._mmmeta.state, MediaMosaResource.STATE.FULL)
 
-    # _meta.api
+    # _mmmeta.api
 
     def test_create_connected_asset(self):
         """Tests if a connected asset can be created"""
@@ -88,7 +88,7 @@ class TestMediaMosaResource(unittest.TestCase):
         self.assertIsInstance(a.is_favorite, bool)
         self.assertIsInstance(a.videotimestampmodified, datetime.datetime)
         self.assertRaises(Exception, a.some_unexisting_attribute)
-        self.assertEqual(a._meta.state, MediaMosaResource.STATE.PARTIAL)
+        self.assertEqual(a._mmmeta.state, MediaMosaResource.STATE.PARTIAL)
 
     # accessing unsupplied data
 
@@ -107,7 +107,7 @@ class TestMediaMosaResource(unittest.TestCase):
         self.assertIsInstance(asset.videotimestamp, datetime.datetime)
         self.assertEquals(self.tt.dump(), '')
         self.assertRaises(Exception, asset.some_unexisting_attribute)
-        self.assertEqual(asset._meta.state, MediaMosaResource.STATE.FULL)
+        self.assertEqual(asset._mmmeta.state, MediaMosaResource.STATE.FULL)
 
     def test_accessing_partial_asset(self):
         """Tests if a partial asset will automatically fill itself if
@@ -123,4 +123,4 @@ class TestMediaMosaResource(unittest.TestCase):
         self.assertIsInstance(asset.videotimestamp, datetime.datetime)
         self.assertNotEquals(self.tt.dump(), '')
         self.assertRaises(Exception, asset.some_unexisting_attribute)
-        self.assertEqual(asset._meta.state, MediaMosaResource.STATE.FULL)
+        self.assertEqual(asset._mmmeta.state, MediaMosaResource.STATE.FULL)

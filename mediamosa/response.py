@@ -1,3 +1,4 @@
+
 import xml.sax
 import xml.sax.handler
 
@@ -49,7 +50,10 @@ class MediaMosaResponseContentHandler(xml.sax.handler.ContentHandler):
 
         elif name == "metadata":
             self.container = "metadata"
-            self.items[-1]["mediafiles"][-1]["metadata"] = {}
+            if "mediafiles" in self.items[-1]:
+                self.items[-1]["mediafiles"][-1]["metadata"] = {}
+            else:
+                self.items[-1]["metadata"] = {}
 
         elif name == "still":
             if "stills" not in self.items[-1]["mediafiles"][-1]:
@@ -75,7 +79,10 @@ class MediaMosaResponseContentHandler(xml.sax.handler.ContentHandler):
             pass
 
         elif name == "metadata":
-            self.container = "mediafile"
+            if "mediafiles" in self.items[-1]:
+                self.container = "mediafile"
+            else:
+                self.container = "item"
 
         elif name == "still":
             self.container = "mediafile"
@@ -98,7 +105,10 @@ class MediaMosaResponseContentHandler(xml.sax.handler.ContentHandler):
                 self.items[-1]["mediafiles"][-1][self.element] = self.buffer
 
             elif self.container == "metadata":
-                self.items[-1]["mediafiles"][-1]["metadata"][self.element] = self.buffer
+                if "mediafiles" in self.items[-1]:
+                    self.items[-1]["mediafiles"][-1]["metadata"][self.element] = self.buffer
+                else:
+                    self.items[-1]["metadata"][self.element] = self.buffer
 
             elif self.container == "still":
                 self.items[-1]["mediafiles"][-1]["stills"][-1][self.element] = self.buffer
@@ -111,4 +121,3 @@ class MediaMosaResponseContentHandler(xml.sax.handler.ContentHandler):
         """
         if self.element:
             self.buffer += content
-

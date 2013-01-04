@@ -53,7 +53,7 @@ class TestAssetResource(unittest.TestCase):
         asset = self.api.asset('g1QkoSmSeHdWfGkMKlOlldLn')
         # validate
         self.assertIsInstance(asset, Asset)
-        self.assertEqual(asset._meta.state, MediaMosaResource.STATE.FULL)
+        self.assertEqual(asset._mmmeta.state, MediaMosaResource.STATE.FULL)
         self.assertTrue(asset.is_connected())
 
     def test_getting_mediafiles_from_asset(self):
@@ -68,6 +68,6 @@ class TestAssetResource(unittest.TestCase):
         self.assertEqual(len(mediafiles), 3)
         for mediafile in mediafiles:
             self.assertIsInstance(mediafile, Mediafile)
-            self.assertEqual(mediafile._meta.state,
+            self.assertEqual(mediafile._mmmeta.state,
                 MediaMosaResource.STATE.PARTIAL)
             self.assertTrue(mediafile.is_connected())
