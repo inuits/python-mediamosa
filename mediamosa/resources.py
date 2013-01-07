@@ -143,6 +143,24 @@ class Asset(MediaMosaResource):
         return [Mediafile.fromdict(dct,
             api=self._mmmeta.api, full=False) for dct in self.mediafiles]
 
+    def get_mediafile(self, extension='mp4'):
+        """Returns the mediafile with a specific extension. If the
+        original is of extension it will only return it if there is no
+        re-encoded version with the same extension.
+        """
+        mediafiles = self.list_mediafiles()
+        original = None
+        for mediafile in mediafiles:
+            if mediafile.is_original_file\
+                 and mediafile.file_extension == extension:
+                original = mediafile
+
+            elif mediafile.file_extension == extension\
+                 and not mediafile.is_original_file:
+                return mediafile
+
+        return original
+
     def __repr__(self):
         return "<mediamosa.resources.Asset %s>" % self.id
 
