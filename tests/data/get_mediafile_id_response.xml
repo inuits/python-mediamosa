@@ -7,19 +7,18 @@
     <request_class>mediamosa_rest_call_get_mediafile</request_class>
     <request_matched_method>GET</request_matched_method>
     <request_matched_uri>/mediafile/$mediafile_id</request_matched_uri>
-    <request_query_count>10</request_query_count>
     <request_result>success</request_result>
     <request_result_description/>
     <request_result_id>601</request_result_id>
-    <request_uri>[GET] mediafile/Md2RgaUEVFhfJMeUIbwPOMei?show_stills=true&amp;mediamosa_version=2.3.0</request_uri>
+    <request_uri>[GET] mediafile/n1cgBgAghcRFDiSlemGvFFaY</request_uri>
     <version>3.2.2.1882-dev</version>
-    <request_process_time>0.0414</request_process_time>
+    <request_process_time>0.0594</request_process_time>
   </header>
   <items>
     <item id="1">
-      <mediafile_id>Md2RgaUEVFhfJMeUIbwPOMei</mediafile_id>
-      <asset_id>g1QkoSmSeHdWfGkMKlOlldLn</asset_id>
-      <mediafile_id_source>u2ilZNiHdl7iNUdexL7BcFMY</mediafile_id_source>
+      <mediafile_id>n1cgBgAghcRFDiSlemGvFFaY</mediafile_id>
+      <asset_id>K1sYXEPIfIWJDRbkkXGAh2rd</asset_id>
+      <mediafile_id_source>H1pbVhNVcBhQxOCca2rYi6zT</mediafile_id_source>
       <tag/>
       <app_id>2</app_id>
       <owner_id>krkeppen</owner_id>
@@ -28,16 +27,181 @@
       <is_downloadable>FALSE</is_downloadable>
       <is_streamable>FALSE</is_streamable>
       <is_still>FALSE</is_still>
-      <filename>Sintel_Trailer1.1080p.DivX_Plus_HD.mp4</filename>
+      <filename>sintel_trailer-480p.mp4</filename>
       <uri/>
       <transcode_profile_id>17</transcode_profile_id>
       <tool>ffmpeg</tool>
-      <command>audiocodec:libfaac;audiobitrate:128000;audiosamplingrate:44100;audiochannels:2;videocodec:libx264;videopreset_quality:slow;videopreset_profile:baseline;2_pass_h264_encoding:2;videobitrate:800000;qmax:17;size:852x480;maintain_aspect_ratio:yes</command>
+      <command>audiocodec:libfaac;audiobitrate:128000;audiosamplingrate:44100;audiochannels:2;videocodec:libx264;videopreset_quality:fast;videopreset_profile:main;2_pass_h264_encoding:1;videobitrate:1000000;size:852x480;maintain_aspect_ratio:yes</command>
       <file_extension>mp4</file_extension>
       <is_protected>FALSE</is_protected>
-      <created>2012-07-05 11:38:14</created>
-      <changed>2012-07-05 11:38:14</changed>
+      <created>2011-08-24 11:13:12</created>
+      <changed>2011-08-24 11:13:12</changed>
       <transcode_inherits_acl>TRUE</transcode_inherits_acl>
+      <still>
+        <mediafile_id>cAWeJHcRfDR5uQPXFa9s1wpL</mediafile_id>
+        <asset_id>K1sYXEPIfIWJDRbkkXGAh2rd</asset_id>
+        <mediafile_id_source>n1cgBgAghcRFDiSlemGvFFaY</mediafile_id_source>
+        <tag/>
+        <app_id>2</app_id>
+        <owner_id>krkeppen</owner_id>
+        <group_id/>
+        <is_original_file>FALSE</is_original_file>
+        <is_downloadable>FALSE</is_downloadable>
+        <is_streamable>FALSE</is_streamable>
+        <is_still>TRUE</is_still>
+        <filename/>
+        <uri/>
+        <transcode_profile_id/>
+        <tool/>
+        <command/>
+        <file_extension>jpeg</file_extension>
+        <is_protected>FALSE</is_protected>
+        <created>2012-03-20 13:20:09</created>
+        <changed>2012-03-20 13:20:09</changed>
+        <transcode_inherits_acl>TRUE</transcode_inherits_acl>
+        <still_ticket>http://filesvideo.ugent.be/media/6/c/cAWeJHcRfDR5uQPXFa9s1wpL.jpeg</still_ticket>
+        <width>852</width>
+        <height>480</height>
+        <filesize>15343</filesize>
+        <mime_type>image/jpeg</mime_type>
+        <still_time_code>8</still_time_code>
+        <still_order>0</still_order>
+        <still_type>NORMAL</still_type>
+        <still_format>jpeg</still_format>
+        <still_default>TRUE</still_default>
+      </still>
+      <still>
+        <mediafile_id>D1iROP7NUaHFChVleTuMVjvL</mediafile_id>
+        <asset_id>K1sYXEPIfIWJDRbkkXGAh2rd</asset_id>
+        <mediafile_id_source>n1cgBgAghcRFDiSlemGvFFaY</mediafile_id_source>
+        <tag/>
+        <app_id>2</app_id>
+        <owner_id>krkeppen</owner_id>
+        <group_id/>
+        <is_original_file>FALSE</is_original_file>
+        <is_downloadable>FALSE</is_downloadable>
+        <is_streamable>FALSE</is_streamable>
+        <is_still>TRUE</is_still>
+        <filename/>
+        <uri/>
+        <transcode_profile_id/>
+        <tool/>
+        <command/>
+        <file_extension>jpeg</file_extension>
+        <is_protected>FALSE</is_protected>
+        <created>2012-03-20 13:20:09</created>
+        <changed>2012-03-20 13:20:09</changed>
+        <transcode_inherits_acl>TRUE</transcode_inherits_acl>
+        <still_ticket>http://filesvideo.ugent.be/media/6/D/D1iROP7NUaHFChVleTuMVjvL.jpeg</still_ticket>
+        <width>852</width>
+        <height>480</height>
+        <filesize>22916</filesize>
+        <mime_type>image/jpeg</mime_type>
+        <still_time_code>17</still_time_code>
+        <still_order>1</still_order>
+        <still_type>NORMAL</still_type>
+        <still_format>jpeg</still_format>
+        <still_default>FALSE</still_default>
+      </still>
+      <still>
+        <mediafile_id>V2GK8dWJbtOeMJQgdaA9GzrJ</mediafile_id>
+        <asset_id>K1sYXEPIfIWJDRbkkXGAh2rd</asset_id>
+        <mediafile_id_source>n1cgBgAghcRFDiSlemGvFFaY</mediafile_id_source>
+        <tag/>
+        <app_id>2</app_id>
+        <owner_id>krkeppen</owner_id>
+        <group_id/>
+        <is_original_file>FALSE</is_original_file>
+        <is_downloadable>FALSE</is_downloadable>
+        <is_streamable>FALSE</is_streamable>
+        <is_still>TRUE</is_still>
+        <filename/>
+        <uri/>
+        <transcode_profile_id/>
+        <tool/>
+        <command/>
+        <file_extension>jpeg</file_extension>
+        <is_protected>FALSE</is_protected>
+        <created>2012-03-20 13:20:09</created>
+        <changed>2012-03-20 13:20:09</changed>
+        <transcode_inherits_acl>TRUE</transcode_inherits_acl>
+        <still_ticket>http://filesvideo.ugent.be/media/6/V/V2GK8dWJbtOeMJQgdaA9GzrJ.jpeg</still_ticket>
+        <width>852</width>
+        <height>480</height>
+        <filesize>47954</filesize>
+        <mime_type>image/jpeg</mime_type>
+        <still_time_code>25</still_time_code>
+        <still_order>2</still_order>
+        <still_type>NORMAL</still_type>
+        <still_format>jpeg</still_format>
+        <still_default>FALSE</still_default>
+      </still>
+      <still>
+        <mediafile_id>WaUeuOwU5UPXrqeWtixzI7sJ</mediafile_id>
+        <asset_id>K1sYXEPIfIWJDRbkkXGAh2rd</asset_id>
+        <mediafile_id_source>n1cgBgAghcRFDiSlemGvFFaY</mediafile_id_source>
+        <tag/>
+        <app_id>2</app_id>
+        <owner_id>krkeppen</owner_id>
+        <group_id/>
+        <is_original_file>FALSE</is_original_file>
+        <is_downloadable>FALSE</is_downloadable>
+        <is_streamable>FALSE</is_streamable>
+        <is_still>TRUE</is_still>
+        <filename/>
+        <uri/>
+        <transcode_profile_id/>
+        <tool/>
+        <command/>
+        <file_extension>jpeg</file_extension>
+        <is_protected>FALSE</is_protected>
+        <created>2012-03-20 13:20:09</created>
+        <changed>2012-03-20 13:20:09</changed>
+        <transcode_inherits_acl>TRUE</transcode_inherits_acl>
+        <still_ticket>http://filesvideo.ugent.be/media/6/W/WaUeuOwU5UPXrqeWtixzI7sJ.jpeg</still_ticket>
+        <width>852</width>
+        <height>480</height>
+        <filesize>41437</filesize>
+        <mime_type>image/jpeg</mime_type>
+        <still_time_code>34</still_time_code>
+        <still_order>3</still_order>
+        <still_type>NORMAL</still_type>
+        <still_format>jpeg</still_format>
+        <still_default>FALSE</still_default>
+      </still>
+      <still>
+        <mediafile_id>i1HMKhXUalOZKkCTSQM3jGPF</mediafile_id>
+        <asset_id>K1sYXEPIfIWJDRbkkXGAh2rd</asset_id>
+        <mediafile_id_source>n1cgBgAghcRFDiSlemGvFFaY</mediafile_id_source>
+        <tag/>
+        <app_id>2</app_id>
+        <owner_id>krkeppen</owner_id>
+        <group_id/>
+        <is_original_file>FALSE</is_original_file>
+        <is_downloadable>FALSE</is_downloadable>
+        <is_streamable>FALSE</is_streamable>
+        <is_still>TRUE</is_still>
+        <filename/>
+        <uri/>
+        <transcode_profile_id/>
+        <tool/>
+        <command/>
+        <file_extension>jpeg</file_extension>
+        <is_protected>FALSE</is_protected>
+        <created>2012-03-20 13:20:09</created>
+        <changed>2012-03-20 13:20:09</changed>
+        <transcode_inherits_acl>TRUE</transcode_inherits_acl>
+        <still_ticket>http://filesvideo.ugent.be/media/6/i/i1HMKhXUalOZKkCTSQM3jGPF.jpeg</still_ticket>
+        <width>852</width>
+        <height>480</height>
+        <filesize>14532</filesize>
+        <mime_type>image/jpeg</mime_type>
+        <still_time_code>42</still_time_code>
+        <still_order>4</still_order>
+        <still_type>NORMAL</still_type>
+        <still_format>jpeg</still_format>
+        <still_default>FALSE</still_default>
+      </still>
       <metadata>
         <video_codec>h264</video_codec>
         <colorspace>yuv420p</colorspace>
@@ -47,11 +211,11 @@
         <audio_codec>aac</audio_codec>
         <sample_rate>44100</sample_rate>
         <channels>stereo</channels>
-        <file_duration>00:00:52.20</file_duration>
+        <file_duration>00:00:52.29</file_duration>
         <container_type>mov;mp4;m4a;3gp;3g2;mj2</container_type>
-        <bitrate>3012</bitrate>
-        <bpp>0.31</bpp>
-        <filesize>20543936</filesize>
+        <bitrate>994</bitrate>
+        <bpp>0.1</bpp>
+        <filesize>6832975</filesize>
         <mime_type>video/mp4</mime_type>
         <is_hinted>TRUE</is_hinted>
         <is_inserted_md>FALSE</is_inserted_md>
