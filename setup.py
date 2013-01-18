@@ -1,10 +1,13 @@
-from distutils.core import setup
+from setuptools import setup
 
-long_desc = open('README.txt').read()
+with open('README.rst') as file:
+    long_desc = file.read()
+
+version = __import__('mediamosa').get_version()
 
 setup(
     name='mediamosa',
-    version='0.0.1',
+    version=version,
     author='UGent Portaal Team',
     author_email='portaal-tech@ugent.be',
     packages=['mediamosa', 'tests'],
