@@ -13,6 +13,9 @@ setup(
     license='LICENSE.txt',
     description='API wrapper for MediaMosa.',
     long_description=long_desc,
+    install_requires=(
+        'requests>=1.0.3'
+    ),
     classifiers=[
           'Development Status :: 3 - Alpha',
           'Environment :: Console',
