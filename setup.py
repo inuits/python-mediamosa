@@ -1,6 +1,6 @@
 from setuptools import setup
 
-with open('README.rst') as file:
+with open('README.rst', 'r') as file:
     long_desc = file.read()
 
 version = __import__('mediamosa').get_version()
@@ -12,9 +12,9 @@ setup(
     author_email='portaal-tech@ugent.be',
     packages=['mediamosa', 'tests'],
     scripts=[],
-    url='http://www.mediamosa.org',
-    license='LICENSE.txt',
-    description='API wrapper for MediaMosa.',
+    url='https://github.com/UGentPortaal/python-mediamosa',
+    license='BSD',
+    description='A high-level API interface for MediaMosa.',
     long_description=long_desc,
     install_requires=(
         'requests>=1.0.3'

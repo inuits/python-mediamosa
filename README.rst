@@ -47,6 +47,7 @@ You can now query your assets
     <mediamosa.resources.Asset B7zsZXLvnnLCCIyJOrCQxxRl>,
     <mediamosa.resources.Asset C2VNSEfaeMc7ToOeirEqiztz>, ...]
 
+Each direct child of an <item> can be accessed as an attribute:
 
 .. code:: python
 
@@ -94,6 +95,9 @@ Playing a mediafile is done as follows:
 This will by default return javascript code necessary to play the
 mediafile.
 
+------
+Errors
+------
 
 If anything goes wrong with executing the queries, the API will throw
 a mediamosa.api.ApiException.
