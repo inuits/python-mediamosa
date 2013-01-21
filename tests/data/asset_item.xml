@@ -1,0 +1,59 @@
+<item>
+      <asset_id>ASSET {{item_id}}</asset_id>
+      <app_id>2</app_id>
+      <provider_id/>
+      <owner_id>krkeppen</owner_id>
+      <group_id/>
+      <videotimestamp>2012-07-05 11:34:01</videotimestamp>
+      <videotimestampmodified>2012-07-05 11:34:35</videotimestampmodified>
+      <play_restriction_start/>
+      <play_restriction_end/>
+      <reference_id/>
+      <isprivate>TRUE</isprivate>
+      <mediafile_duration>00:00:52.20</mediafile_duration>
+      <mediafile_container_type>matroska;webm</mediafile_container_type>
+      <is_unappropriate>FALSE</is_unappropriate>
+      <is_external>FALSE</is_external>
+      <is_empty_asset>FALSE</is_empty_asset>
+      <viewed>41</viewed>
+      <played>18</played>
+      <is_protected>FALSE</is_protected>
+      <asset_property_is_hidden>FALSE</asset_property_is_hidden>
+      <is_unappropiate>FALSE</is_unappropiate>
+      <dublin_core>
+        <contributor>, </contributor>
+        <coverage_spatial/>
+        <coverage_temporal/>
+        <creator>Kristof Keppens</creator>
+        <date/>
+        <description>test</description>
+        <format>streaming video</format>
+        <identifier/>
+        <language>nl</language>
+        <publisher>Kristof Keppens</publisher>
+        <relation/>
+        <rights>Kristof Keppens</rights>
+        <source>ugent</source>
+        <subject>test</subject>
+        <title>test sintel 2</title>
+        <type>video</type>
+      </dublin_core>
+      <qualified_dublin_core>
+        <created/>
+        <description_abstract/>
+        <format_extent/>
+        <format_medium/>
+        <hasformat/>
+        <isformatof/>
+        <isreferencedby/>
+        <issued/>
+        <license/>
+        <rightsholder/>
+        <title_alternative/>
+      </qualified_dublin_core>
+      <is_favorite>FALSE</is_favorite>
+      <granted>TRUE</granted>
+      <has_streamable_mediafiles>TRUE</has_streamable_mediafiles>
+      <ega_still_url/>
+      <vpx_still_url>http://filvideod.ugent.be/media/17/Z/Z14cWALWKmfTRjTUKhhQQLv2.jpeg</vpx_still_url>
+    </item>

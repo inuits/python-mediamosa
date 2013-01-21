@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<response>
+  <header>
+    <item_count>1</item_count>
+    <item_count_total>1</item_count_total>
+    <item_offset>0</item_offset>
+    <request_class>mediamosa_rest_call_app_ident</request_class>
+    <request_matched_method>POST</request_matched_method>
+    <request_matched_uri>/login</request_matched_uri>
+    <request_query_count>0</request_query_count>
+    <request_result>error</request_result>
+    <request_result_description>DBUS ERROR mechanism not specified</request_result_description>
+    <request_result_id>1600</request_result_id>
+    <request_uri>[POST] login</request_uri>
+    <version>3.2.2.1882-dev</version>
+    <request_process_time>0.0327</request_process_time>
+  </header>
+  <items>
+    <item>
+      <dbus>ERROR mechanism not specified</dbus>
+    </item>
+  </items>
+</response>
