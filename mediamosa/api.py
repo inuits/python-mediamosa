@@ -44,13 +44,13 @@ class MediaMosaAPI(object):
         headers, items = self._get('/mediafile/%s' % mediafile_id)
         return Mediafile.fromdict(items[0], api=self, full=True)
 
-    def asset_list(self, offset=0, limit=10):
+    def asset_list(self, offset=0, limit=10, **kwargs):
         """Returns a list of partial Assets
         """
-        headers, items = self._get('/asset', {
+        headers, items = self._get('/asset', kwargs.update({
                 'offset': offset,
                 'limit': limit
-            })
+            }))
         return AssetList(
             headers,
             [Asset.fromdict(item_dict, api=self) for item_dict in items],
