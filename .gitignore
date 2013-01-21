@@ -1,2 +1,5 @@
 *.pyc
-MediaMosa.egg-info
+*.egg-info
+/dist
+/build
+MANIFEST

@@ -103,10 +103,10 @@ class Mediafile(MediaMosaResource):
         return "<mediamosa.resources.Mediafile (%s) %s>" % \
             (self.file_extension, self.id)
 
-    def play(self):
+    def play(self, format=None):
         play_info = self._mmmeta.api.play(
             self, user_id='pyUser',
-            response=self.FORMATS.OBJECT)
+            response=format or self.FORMATS.OBJECT)
         if play_info:
             return play_info.get('output')
         return None
