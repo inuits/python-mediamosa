@@ -21,7 +21,7 @@ Getting Started
 
 Start by creating a connection to a mediamosa api.
 
-::
+.. code:: python
 
     >>> from mediamosa.api import MediaMosaAPI
     >>> api = MediaMosaAPI('http://apivideo.ugent.be')
@@ -32,6 +32,8 @@ the .authentication() method returns a boolean indicating if the
 username and password were accepted by the server.
 
 You can now query your assets
+
+.. code:: python
 
     >>> api.asset_list()
     [<mediamosa.resources.Asset GAKkgcmMPaIZdMl3dczqUESA>,
@@ -45,6 +47,9 @@ You can now query your assets
     <mediamosa.resources.Asset B7zsZXLvnnLCCIyJOrCQxxRl>,
     <mediamosa.resources.Asset C2VNSEfaeMc7ToOeirEqiztz>, ...]
 
+
+.. code:: python
+
     >>> asset = api.asset_list()[0]
     >>> asset.dublin_core.get('title')
     u'big buck bunny '
@@ -52,11 +57,15 @@ You can now query your assets
 You can also indiviually request specific assets by querying the api
 object:
 
+.. code:: python
+
     >>> api.asset('ONZDQiGfhTf8OcsKumKISpOy')
     <mediamosa.resources.Asset ONZDQiGfhTf8OcsKumKISpOy>
 
 
 Mediafiles connected to the asset can also be queried:
+
+.. code:: python
 
     >>> asset.list_mediafiles()
     [<mediamosa.resources.Mediafile (mp4) Yb8peCXknRXIhimONUUzkuBT>]
@@ -69,11 +78,15 @@ Mediafiles connected to the asset can also be queried:
 You can also individually request mediafiles by querying the api
 object:
 
+.. code:: python
+
     >>> api.mediafile('Yb8peCXknRXIhimONUUzkuBT')
     <mediamosa.resources.Mediafile (mp4) Yb8peCXknRXIhimONUUzkuBT>
 
 
 Playing a mediafile is done as follows:
+
+.. code:: python
 
     >>> mediafile.play()
     u'<script type="text/javascript">...'
