@@ -169,9 +169,10 @@ class AssetList(list):
 
     DEFAULT_LIMIT = 10
 
-    def __init__(self, headers, body, api=None):
+    def __init__(self, headers, body, kwargs={}, api=None):
         self._api = api
         self.headers = headers
+        self.kwargs = kwargs
         self.body = body
         self._update_location_info()
         # add items to the body
@@ -195,7 +196,7 @@ class AssetList(list):
         """
         # query new list of items
         new_asset_list = self._api.asset_list(offset=offset,
-            limit=limit or self.DEFAULT_LIMIT)
+            limit=limit or self.DEFAULT_LIMIT, **self.kwargs)
         # update header info and pointers
         self.headers = new_asset_list.headers
         self._update_location_info()
