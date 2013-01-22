@@ -17,7 +17,8 @@ setup(
     description='A high-level API interface for MediaMosa.',
     long_description=long_desc,
     install_requires=(
-        'requests>=1.0.3'
+        'requests>=1.0.3',
+        'MiniMock==1.2.7',
     ),
     classifiers=[
           'Development Status :: 3 - Alpha',
