@@ -1,6 +1,10 @@
 mediamosa Changelog
 ===================
 
+mediamosa 0.0.3
+---------------
+- Fixed AssetList to support filters when fetching a new page.
+
 mediamosa 0.0.2
 ---------------
 - Added support for API kwargs on asset_list
