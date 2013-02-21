@@ -100,6 +100,10 @@ class MediaMosaAPI(object):
         handler = MediaMosaResponseContentHandler()
         xml.sax.parseString(response, handler)
 
+        # throw ApiException if something went wrong
+        if handler.headers.get('request_result') == 'error':
+            raise ApiException(handler.headers.get('request_result_description'))
+
         return (handler.headers, handler.items)
 
     ## HTTP LAYER
