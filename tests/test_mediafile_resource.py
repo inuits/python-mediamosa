@@ -3,7 +3,7 @@ import unittest
 from minimock import Mock, mock, TraceTracker
 
 from mediamosa.resources import Mediafile, MediaMosaResource
-from mediamosa.api import MediaMosaAPI
+from mediamosa.api import MediaMosaAPI, ApiException
 
 
 class TestMediafileResource(unittest.TestCase):
@@ -54,4 +54,10 @@ class TestMediafileResource(unittest.TestCase):
         self.assertIsInstance(mediafile, Mediafile)
         self.assertEqual(mediafile._mmmeta.state, MediaMosaResource.STATE.FULL)
 
-
+    def test_getting_unexisting_mediafile(self):
+        """Test fetching an non-existing mediafile"""
+        # setup
+        self.response.content = open('tests/data/invalid_mediafile_request.xml')\
+                                    .read()
+        # validate
+        self.assertRaises(ApiException, self.api.mediafile, ('g1QkoSmSeHdWfGkMKlOlldLn'))

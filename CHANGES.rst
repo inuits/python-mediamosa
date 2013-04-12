@@ -1,6 +1,10 @@
 mediamosa Changelog
 ===================
 
+mediamosa 0.0.4
+---------------
+- Added exception handling and improved session handling
+
 mediamosa 0.0.3
 ---------------
 - Fixed AssetList to support filters when fetching a new page.

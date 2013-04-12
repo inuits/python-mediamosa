@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<response>
+  <header>
+    <item_count>0</item_count>
+    <item_count_total>0</item_count_total>
+    <item_offset>0</item_offset>
+    <request_class>mediamosa_rest_call_get_mediafile</request_class>
+    <request_matched_method>GET</request_matched_method>
+    <request_matched_uri>/mediafile/$mediafile_id</request_matched_uri>
+    <request_result>error</request_result>
+    <request_result_description>The mediafile with ID 'F17xMcUeSMNVgUneQeXbIy0N' was not found in the database</request_result_description>
+    <request_result_id>701</request_result_id>
+    <request_uri>[GET] mediafile/F17xMcUeSMNVgUneQeXbIy0N?show_stills=true&amp;mediamosa_version=2.3.0</request_uri>
+    <version>3.2.2.1882-dev</version>
+    <request_process_time>0.0235</request_process_time>
+  </header>
+  <items/>
+</response>

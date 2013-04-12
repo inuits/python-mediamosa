@@ -87,10 +87,8 @@ class TestLoginFunctions(unittest.TestCase):
         self.api.secret = self.secret
         self.response.content = open(
             'tests/data/login_invalid_challenge_response_response.xml').read()
-        # test
-        success = self.api._login_response("92dc06bbb703f14354fdfbede9b62ff9")
         # validate
-        self.assertEquals(success, False)
+        self.assertRaises(ApiException, self.api._login_response, ("92dc06bbb703f14354fdfbede9b62ff9"))
 
     def test_successful_authentication(self):
         # setup
