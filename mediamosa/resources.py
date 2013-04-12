@@ -1,5 +1,5 @@
 import datetime
-
+import sys
 
 class MediaMosaResource(object):
 
@@ -228,6 +228,8 @@ class AssetList(list):
 
     def __getslice__(self, i, j):
         # call the required slice from the API.
+        if j == sys.maxint:
+            j = 200 # get the maximum allowed slice from the api.
         self._fetch_page(i, j - i)
         return super(AssetList, self).__getslice__(0, j - i)
 

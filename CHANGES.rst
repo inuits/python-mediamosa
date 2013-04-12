@@ -1,6 +1,10 @@
 mediamosa Changelog
 ===================
 
+mediamosa 0.0.5
+---------------
+- Fixed an issue where getting slice [1:] fails.
+
 mediamosa 0.0.4
 ---------------
 - Added exception handling and improved session handling
