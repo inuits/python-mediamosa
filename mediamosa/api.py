@@ -3,8 +3,9 @@ import random
 import requests
 import xml.sax
 
-from resources import Asset, Mediafile, AssetList
-from response import MediaMosaResponseContentHandler
+from .resources import Asset, Mediafile, AssetList
+from .response import MediaMosaResponseContentHandler
+from . import errors
 
 
 class ApiException(Exception):
@@ -94,15 +95,29 @@ class MediaMosaAPI(object):
 
         return headers.get('request_result') == 'success'
 
-    def _parse(self, response):
+    def _parse(self, response,
+        replay_request=id,
+        replay_uri='/asset',
+        replay_payload={}):
         """Parse a Mediamosa-response.
         """
         handler = MediaMosaResponseContentHandler()
         xml.sax.parseString(response, handler)
 
-        # throw ApiException if something went wrong
+        # error handling
         if handler.headers.get('request_result') == 'error':
-            raise ApiException(handler.headers.get('request_result_description'))
+            # handle stale authentication token
+            if handler.headers.get('request_result_id') == errors.ERRORCODE_ACCESS_DENIED:
+                self.autenticated = self.authenticate(
+                    self.username, self.secret)
+                if self.authenticated:
+                    # replay request
+                    return replay_request(replay_uri, replay_payload)
+                else:
+                    raise ApiException(handler.headers.get('request_result_description'))
+            # throw ApiException if something else went wrong
+            else:
+                raise ApiException(handler.headers.get('request_result_description'))
 
         return (handler.headers, handler.items)
 
@@ -114,20 +129,22 @@ class MediaMosaAPI(object):
     def _post(self, relative_uri, payload={}):
         """Performs a post call to the api
         """
-        response = self.session.post(self._get_absolute_uri(relative_uri),
+        response = self.session.post(
+            self._get_absolute_uri(relative_uri),
             data=payload)
         if response.status_code != 200:
             raise ApiException('API returned %s' % response.status_code)
 
-        return self._parse(response.content)
+        return self._parse(response.content, self._post, relative_uri, payload)
 
     def _get(self, relative_uri, payload={}):
         """Performs a get call to the api.
         """
-        response = self.session.get(self._get_absolute_uri(relative_uri),
+        response = self.session.get(
+            self._get_absolute_uri(relative_uri),
             params=payload)
 
         if response.status_code != 200:
             raise ApiException('API returned %s' % response.status_code)
 
-        return self._parse(response.content)
+        return self._parse(response.content, self._get, relative_uri, payload)
