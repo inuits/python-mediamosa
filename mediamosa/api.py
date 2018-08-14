@@ -82,8 +82,8 @@ class MediaMosaAPI(object):
     def _login_response(self, challenge):
         """Performs a login response to a particular challenge
         """
-        rand = hashlib.md5(str(random.random())).hexdigest()[:8]
-        digest = hashlib.sha1('%s:%s:%s' % (challenge, rand, self.secret))\
+        rand = hashlib.md5(str(random.random()).encode('utf-8')).hexdigest()[:8]
+        digest = hashlib.sha1(('%s:%s:%s' % (challenge, rand, self.secret)).encode('utf-8'))\
                         .hexdigest()
         headers, items = self._post('/login',
             {'dbus': 'DATA %s %s' % (rand, digest)})

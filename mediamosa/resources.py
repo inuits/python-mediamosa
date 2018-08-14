@@ -1,6 +1,7 @@
 import datetime
 import sys
 
+
 class MediaMosaResource(object):
 
     class STATE(object):
@@ -243,6 +244,9 @@ class AssetList(list):
             return self[self.index]
         else:
             raise StopIteration
+
+    def __next__(self):
+        return self.next()
 
     def __len__(self):
         """Returns the total amount of assets, not simple the loaded ones.
