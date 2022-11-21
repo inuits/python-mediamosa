@@ -17,6 +17,7 @@ setup(
     description='A high-level API interface for MediaMosa.',
     long_description=long_desc,
     install_requires=(
+        'PySocks>=1.7.1',
         'requests>=1.0.3',
         'MiniMock==1.2.7',
     ),

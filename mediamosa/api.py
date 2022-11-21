@@ -19,6 +19,13 @@ class MediaMosaAPI(object):
         self.session = requests.session()
 
     ## API
+    def set_proxy(self, proxy):
+        """Set proxy to connect over to MediaMosa
+        """
+        self.session.proxies = {
+            "https": proxy,
+            "http": proxy,
+        }
 
     def authenticate(self, username, secret):
         """Authenticates with the server
