@@ -8,6 +8,8 @@ _formats = {
     "request_process_time": float,
 }
 _dictionaries = {
+    "asset": lambda handler:
+        _setDictionary(handler._dictionaries[-1], key="asset"),
     "dublin_core": lambda handler:
         _setDictionary(handler._dictionaries[-1], key="dublin_core"),
     "header": lambda handler:
