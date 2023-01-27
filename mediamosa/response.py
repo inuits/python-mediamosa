@@ -8,28 +8,28 @@ _formats = {
     "request_process_time": float,
 }
 _dictionaries = {
-    "asset": lambda handler:
-        _setDictionary(handler._dictionaries[-1], key="asset"),
-    "dublin_core": lambda handler:
-        _setDictionary(handler._dictionaries[-1], key="dublin_core"),
-    "header": lambda handler:
-        handler.headers,
-    "item": lambda handler:
-        _setDictionary(handler.items),
-    "mediafile": lambda handler:
-        _setDictionary(handler.items[-1]["mediafiles"]),
-    "metadata": lambda handler:
-        _setDictionary(handler._dictionaries[-1], key="metadata"),
-    "qualified_dublin_core": lambda handler:
-        _setDictionary(handler._dictionaries[-1], key="qualified_dublin_core"),
-    "still": lambda handler:
-        _setDictionary(handler.items[-1]["mediafiles"][-1]["stills"]),
+    "asset": lambda handler: _setDictionary(handler._dictionaries[-1], key="asset"),
+    "dublin_core": lambda handler: _setDictionary(
+        handler._dictionaries[-1], key="dublin_core"
+    ),
+    "header": lambda handler: handler.headers,
+    "item": lambda handler: _setDictionary(handler.items),
+    "mediafile": lambda handler: _setDictionary(handler.items[-1]["mediafiles"]),
+    "metadata": lambda handler: _setDictionary(
+        handler._dictionaries[-1], key="metadata"
+    ),
+    "qualified_dublin_core": lambda handler: _setDictionary(
+        handler._dictionaries[-1], key="qualified_dublin_core"
+    ),
+    "still": lambda handler: _setDictionary(
+        handler.items[-1]["mediafiles"][-1]["stills"]
+    ),
 }
 _lists = {
-    "mediafiles": lambda handler:
-        handler.items[-1].setdefault(u"mediafiles", []),
-    "still": lambda handler:
-        handler.items[-1].setdefault("mediafiles", [{}])[-1].setdefault(u"stills", []),
+    "mediafiles": lambda handler: handler.items[-1].setdefault("mediafiles", []),
+    "still": lambda handler: handler.items[-1]
+    .setdefault("mediafiles", [{}])[-1]
+    .setdefault("stills", []),
 }
 _ignore = [
     "items",
@@ -39,8 +39,7 @@ _ignore = [
 
 
 def _setDictionary(container, key=None):
-    """Set a dictionary.
-    """
+    """Set a dictionary."""
     dictionary = {}
 
     if type(container) == dict:
@@ -52,12 +51,10 @@ def _setDictionary(container, key=None):
 
 
 class MediaMosaResponseContentHandler(xml.sax.handler.ContentHandler):
-    """Content-handler for responses from a MediaMosa-server.
-    """
+    """Content-handler for responses from a MediaMosa-server."""
 
     def __init__(self):
-        """Constructor.
-        """
+        """Constructor."""
         self.headers = {}
         self.items = []
 
@@ -66,8 +63,7 @@ class MediaMosaResponseContentHandler(xml.sax.handler.ContentHandler):
         self._content = None
 
     def startElement(self, name, attributes):
-        """Handle start-element.
-        """
+        """Handle start-element."""
         if name in _lists:
             _lists[name](self)
 
@@ -76,11 +72,10 @@ class MediaMosaResponseContentHandler(xml.sax.handler.ContentHandler):
             self._dictionaries.append(dict_)
 
         self._elements.append(name)
-        self._content = u""
+        self._content = ""
 
     def endElement(self, name):
-        """Handle end-element.
-        """
+        """Handle end-element."""
         try:
             if name in _ignore:
                 pass
@@ -101,8 +96,7 @@ class MediaMosaResponseContentHandler(xml.sax.handler.ContentHandler):
         self._content = None
 
     def characters(self, content):
-        """Handle characters.
-        """
+        """Handle characters."""
         if self._elements:
             if self._content is not None:
                 self._content += content
