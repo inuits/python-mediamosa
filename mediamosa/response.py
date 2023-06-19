@@ -9,6 +9,12 @@ _formats = {
 }
 _dictionaries = {
     "asset": lambda handler: _setDictionary(handler._dictionaries[-1], key="asset"),
+    "app_18": lambda handler: _setDictionary(
+        handler._dictionaries[-1], key="app_18"
+    ),
+    "app_345": lambda handler: _setDictionary(
+        handler._dictionaries[-1], key="app_345"
+    ),
     "dublin_core": lambda handler: _setDictionary(
         handler._dictionaries[-1], key="dublin_core"
     ),
