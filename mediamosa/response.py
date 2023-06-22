@@ -25,7 +25,7 @@ _dictionaries = {
         handler.items[-1]["mediafiles"][-1]["stills"]
     ),
 }
-for i in range(0,1000):
+for i in range(0, 1000):
     _dictionaries[f"app_{i}"] = lambda handler: _setDictionary(
         handler._dictionaries[-1], key=f"app_{i}"
     )

@@ -180,7 +180,6 @@ class Asset(MediaMosaResource):
 
 
 class AssetList(list):
-
     DEFAULT_LIMIT = 10
 
     def __init__(self, headers, body, kwargs={}, api=None):
