@@ -9,18 +9,6 @@ _formats = {
 }
 _dictionaries = {
     "asset": lambda handler: _setDictionary(handler._dictionaries[-1], key="asset"),
-    "app_15": lambda handler: _setDictionary(
-        handler._dictionaries[-1], key="app_15"
-    ),
-    "app_18": lambda handler: _setDictionary(
-        handler._dictionaries[-1], key="app_18"
-    ),
-    "app_48": lambda handler: _setDictionary(
-        handler._dictionaries[-1], key="app_48"
-    ),
-    "app_345": lambda handler: _setDictionary(
-        handler._dictionaries[-1], key="app_345"
-    ),
     "dublin_core": lambda handler: _setDictionary(
         handler._dictionaries[-1], key="dublin_core"
     ),
@@ -37,6 +25,10 @@ _dictionaries = {
         handler.items[-1]["mediafiles"][-1]["stills"]
     ),
 }
+for i in range(0,1000):
+    _dictionaries[f"app_{i}"] = lambda handler: _setDictionary(
+        handler._dictionaries[-1], key=f"app_{i}"
+    )
 _lists = {
     "mediafiles": lambda handler: handler.items[-1].setdefault("mediafiles", []),
     "still": lambda handler: handler.items[-1]
