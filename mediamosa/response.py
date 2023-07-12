@@ -26,7 +26,7 @@ _dictionaries = {
     ),
 }
 for i in range(0, 1000):
-    _dictionaries[f"app_{i}"] = lambda handler: _setDictionary(
+    _dictionaries[f"app_{i}"] = lambda handler, i=i: _setDictionary(
         handler._dictionaries[-1], key=f"app_{i}"
     )
 _lists = {
