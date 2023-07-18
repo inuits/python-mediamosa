@@ -92,7 +92,12 @@ class MediaMosaResponseContentHandler(xml.sax.handler.ContentHandler):
                 else:
                     content = self._content
 
-                self._dictionaries[-1][name] = content
+                if name in self._dictionaries[-1]:
+                    if type(self._dictionaries[-1][name]) != list:
+                        self._dictionaries[-1][name] = [self._dictionaries[-1][name]]
+                    self._dictionaries[-1][name].append(content)
+                else:
+                    self._dictionaries[-1][name] = content
         except IndexError:
             pass
 
