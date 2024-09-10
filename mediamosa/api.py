@@ -37,9 +37,9 @@ class MediaMosaAPI(object):
         self.authenticated = success
         return success
 
-    def asset(self, asset_id):
+    def asset(self, asset_id, **kwargs):
         """Returns a full asset"""
-        headers, items = self._get("/asset/%s" % asset_id)
+        headers, items = self._get("/asset/%s" % asset_id, kwargs)
         return Asset.fromdict(items[0], api=self, full=True)
 
     def mediafile(self, mediafile_id):

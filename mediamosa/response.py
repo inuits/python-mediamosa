@@ -18,6 +18,9 @@ _dictionaries = {
     "metadata": lambda handler: _setDictionary(
         handler._dictionaries[-1], key="metadata"
     ),
+    "rdf:Description": lambda handler: _setDictionary(
+        handler._dictionaries[-1], key="rdf"
+    ),
     "qualified_dublin_core": lambda handler: _setDictionary(
         handler._dictionaries[-1], key="qualified_dublin_core"
     ),
@@ -39,6 +42,7 @@ _ignore = [
     "items",
     "mediafiles",
     "response",
+    "rdf",
 ]
 
 
